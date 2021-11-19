@@ -5,6 +5,13 @@ services:
     # https://hub.docker.com/_/mongo
     # https://hub.docker.com/_/postgres
     # https://hub.docker.com/_/mysql
+    image: mongo
+    volumes:
+    - ./db-data:/data/db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     networks:
       - private
   node:
