@@ -10,8 +10,8 @@ services:
     - ./db-data:/data/db
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: bq
+      MONGO_INITDB_ROOT_PASSWORD: secret
     networks:
       - private
   node:
@@ -21,7 +21,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 8080
-      DB_URL: <CONNECTION STRING>
+      DB_URL: mongodb://bq:secret@db:27017/bq?authSource=admin
       JWT_SECRET: xxxxxxxx
       ADMIN_EMAIL: admin@localhost
       ADMIN_PASSWORD: changeme
