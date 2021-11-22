@@ -13,7 +13,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: bq
       MONGO_INITDB_ROOT_PASSWORD: secret
     networks:
+      - public
       - private
+    ports:
+      - 28017:27017
   node:
     image: node:12 # https://hub.docker.com/_/node/
     user: node
