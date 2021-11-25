@@ -4,10 +4,8 @@ const userSchema = new Schema({
   email: String,
   password: String,
   roles: {
-    type: Object,
-    optional: true,
     admin: Boolean,
   },
 });
 
-module.exports = model('Product', userSchema);
+module.exports = model('User', userSchema);
