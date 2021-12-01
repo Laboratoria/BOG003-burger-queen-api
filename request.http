@@ -1,0 +1,29 @@
+### Obtener productos
+GET http://localhost:80/products
+
+### Crear producto
+POST http://localhost:80/products
+Content-Type: application/json
+
+{   
+    "name": "Hamburguesa doble res",
+    "price": 6,
+    "imagen": "hamburguesa",
+    "type":"almuerzo"
+}
+
+### Obtener un solo producto 
+GET http://localhost:80/products/61a691e729fc68bc2c9085ee
+### Editar producto
+PUT http://localhost:80/products/61a691e729fc68bc2c9085ee
+Content-Type: application/json
+
+{
+    "name": "sandwich de pollo",
+    "price": 5,
+    "imagen": "sandwich",
+    "type": "lunch"   
+}
+
+### Borrar producto
+DELETE http://localhost:80/products/61a691e729fc68bc2c9085ee
