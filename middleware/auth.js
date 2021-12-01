@@ -24,12 +24,12 @@ module.exports = (secret) => (req, resp, next) => {
 
 module.exports.isAuthenticated = (req) => (
   // TODO: decidir por la informacion del request si la usuaria esta autenticada
-  false
+  true
 );
 
 module.exports.isAdmin = (req) => (
   // TODO: decidir por la informacion del request si la usuaria es admin
-  false
+  true
 );
 
 module.exports.requireAuth = (req, resp, next) => (

@@ -1,21 +1,37 @@
 const Product = require('../models/Product');
 
 module.exports = {
-  getProducts: (req, resp, next) => {
-    resp.send('No implementado: Obtener lista de productos')
-
+  getProducts: async (req, resp) => {
+    const products = await Product.find();
+    resp.json(products);
   },
-  getProduct: (req, resp, next) => {
-    const productId = req.params.id;
-    resp.send('No implementado: Obtener producto por su ID' + productId)
+  getProduct: async (req, resp) => {
+    const product = await Product.findById(req.params.productId);
+    resp.json(product);
   },
-  postProduct: (req, resp, next) => {
-    resp.send('No implementado: crear producto')
+  postProduct: async (req, resp) => {
+    const { name, price, imagen, type } =req.body;
+    const newProduct = new Product({
+      name,
+      price,
+      imagen,
+      type,
+    });
+    await newProduct.save();
+    resp.json({message: 'Product saved'});
   },
-  putProduct: (req, resp, next) => {
-    resp.send('No implementado: editar producto')
+  putProduct: async (req, resp) => {
+    const { name, price, imagen, type } = req.body;
+    await Product.findByIdAndUpdate(req.params.productId, {
+      name,
+      price,
+      imagen,
+      type,
+    });
+    resp.json({ message: 'Product Updated' });
   },
-  deleteProduct: (req, resp, next) => {
-    resp.send('No implementado: borrar producto')
+  deleteProduct: async (req, resp) => {
+    await Product.findByIdAndDelete(req.params.productId);
+    resp.json({ message: 'Product deleted' });
   }
 };
