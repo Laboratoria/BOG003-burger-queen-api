@@ -16,7 +16,7 @@ services:
       - public
       - private
     ports:
-      - 28017:27017
+      - 27017:27017
   node:
     image: node:12 # https://hub.docker.com/_/node/
     user: node
@@ -37,7 +37,8 @@ services:
       # máquina
       - 80:8080
     # reinstalamos las dependencias y levantamos el servidor
-    command: bash -c 'rm -rf node_modules && npm install && npm start'
+    # command: bash -c 'rm -rf node_modules && npm install && npm start'
+    command: bash -c 'npm start'    
     depends_on:
       - db
     networks:
