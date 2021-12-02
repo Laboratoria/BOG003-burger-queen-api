@@ -6,6 +6,7 @@ const userSchema = new Schema({
   roles: {
     admin: Boolean,
   },
+  orders: Array,
 });
 
 module.exports = model('User', userSchema);
