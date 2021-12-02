@@ -10,28 +10,30 @@ module.exports = {
     resp.json(product);
   },
   postProduct: async (req, resp) => {
-    const { name, price, imagen, type } =req.body;
+    const { name, price, imagen, type, dateEntry } = req.body;
     const newProduct = new Product({
       name,
       price,
       imagen,
       type,
+      dateEntry,
     });
     await newProduct.save();
-    resp.json({message: 'Product saved'});
+    resp.json({ message: 'Product saved' });
   },
   putProduct: async (req, resp) => {
-    const { name, price, imagen, type } = req.body;
+    const { name, price, imagen, type, dateEntry } = req.body;
     await Product.findByIdAndUpdate(req.params.productId, {
       name,
       price,
       imagen,
       type,
+      dateEntry,
     });
     resp.json({ message: 'Product Updated' });
   },
   deleteProduct: async (req, resp) => {
     await Product.findByIdAndDelete(req.params.productId);
     resp.json({ message: 'Product deleted' });
-  }
+  },
 };

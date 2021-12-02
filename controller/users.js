@@ -1,19 +1,37 @@
 const User = require('../models/User');
 
 module.exports = {
-  getUsers: (req, resp, next) => {
+  getUsers: async (req, resp, next) => {
+    const user = await User.find().populate({ path: 'orders', populate: { path: 'orderId' } });
+    resp.json(user);
   },
-  getUser: (req, resp, next) => {
-    const userId = req.params.id;
-    resp.send('No implementado: Obtener usuario por su ID', userId);
+  getUser: async (req, resp, next) => {
+    const user = await User.findById(req.params.uid);
+    resp.json(user);
   },
-  postUser: (req, resp, next) => {
-    resp.send('No implementado: crear usuario');
+  postUser: async (req, resp, next) => {
+    const { email, password, roles, orders } = req.body;
+    const newUser = new User({
+      email,
+      password,
+      roles,
+      orders,
+    });
+    await newUser.save();
+    resp.json({ message: 'User saved' });
   },
-  putUser: (req, resp, next) => {
-    resp.send('No implementado: editar usuario');
+  putUser: async (req, resp, next) => {
+    const { email, password, roles, orders } = req.body;
+    await User.findByIdAndUpdate(req.params.uid, {
+      email,
+      password,
+      roles,
+      orders,
+    });
+    resp.json({ message: 'User updated' });
   },
-  deleteUser: (req, resp, next) => {
-    resp.send('No implementado: borrar usuario');
-  }
+  deleteUser: async (req, resp, next) => {
+    await User.findByIdAndUpdate(req.params.uid);
+    resp.json({ message: 'User deleted' });
+  },
 };
