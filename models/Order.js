@@ -7,6 +7,12 @@ const OrderSchema = new Schema({
     productId: String,
     qty: Number,
   }],
+  status: {
+    type: String,
+    enum: ['pending', 'delivering', 'delivered', 'canceled'],
+    default: 'pending',
+  },
+  dateEntry: Date,
 });
 
 module.exports = model('Order', OrderSchema);
