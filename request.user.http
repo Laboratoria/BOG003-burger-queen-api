@@ -1,0 +1,29 @@
+### Obtener usuarios
+GET http://localhost:80/users
+
+### Crear usuario
+POST http://localhost:80/users
+Content-Type: application/json
+
+{   
+    "email":"danna@correo.com",
+    "password":"contraseña",
+    "roles": {"admin": true},
+    "orders":[]
+}
+
+### Obtener un solo usuario
+GET http://localhost:80/users/61a90d455ed2cce78aa602f2
+### Editar usuario
+PUT http://localhost:80/users/61a90d455ed2cce78aa602f2
+Content-Type: application/json
+
+{
+    "email":"danna@correo.com",
+    "password":"contraseña2",
+    "roles": {"admin": true},
+    "orders":[]   
+}
+
+### Borrar usuario
+DELETE http://localhost:80/users/61a691e729fc68bc2c9085ee
