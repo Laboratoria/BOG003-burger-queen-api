@@ -8,6 +8,7 @@ const productSchema = new Schema({
   },
   imagen: String,
   type: String,
+  dateEntry: Date,
 });
 
 module.exports = model('Product', productSchema);
