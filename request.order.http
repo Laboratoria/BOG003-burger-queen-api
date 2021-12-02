@@ -1,0 +1,26 @@
+### Obtener ordenes
+GET http://localhost:80/orders
+
+### Crear orden
+POST http://localhost:80/orders
+Content-Type: application/json
+
+{   
+    "userId": "61a90d455ed2cce78aa602f2",
+    "client": "Juan E",
+    "products": [{"productId":"61a90cd45ed2cce78aa602eb", "qty": 1}, {"productId":"61a90cc55ed2cce78aa602e9", "qty": 2} ],
+    "status": "pending",
+    "dateEntry": 1638466040
+
+}
+
+### Obtener una orden
+GET http://localhost:80/orders/61a95130a8a7d6baab532c68
+
+### Editar una orden
+PUT http://localhost:80/orders/61a95130a8a7d6baab532c68
+Content-Type: application/json
+
+{   
+    "status": "delivering"
+}
