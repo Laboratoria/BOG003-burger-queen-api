@@ -6,15 +6,15 @@ POST http://localhost:80/products
 Content-Type: application/json
 
 {   
-    "name": "Hamburguesa de res",
+    "name": "Mocaccino",
     "price": 10,
     "imagen": "no imagen",
-    "type":"almuerzo",
-    "dateEntry": "2021-12-2"
+    "type":"desayuno",
+    "dateEntry": "2021-12-6"
 }
 
 ### Obtener un solo producto 
-GET http://localhost:80/products/61a691e729fc68bc2c9085ee
+GET http://localhost:80/products/61a90cd45ed2cce78aa602eb
 ### Editar producto
 PUT http://localhost:80/products/61a691e729fc68bc2c9085ee
 Content-Type: application/json
