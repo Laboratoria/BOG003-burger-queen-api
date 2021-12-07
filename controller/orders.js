@@ -1,11 +1,11 @@
 const Order = require('../models/Order');
 const User = require('../models/User');
+const pagination = require('../pagination');
 
 module.exports = {
   getOrders: async (req, resp) => {
-    // const { products } = req.body;
-    const orders = await Order.find().populate({ path: 'products', populate: { path: 'productId' } });
-    resp.json(orders);
+    const ordersList = pagination(req, resp, Order);
+    return ordersList;
   },
   getOrder: async (req, resp) => {
     const order = await Order.findById(req.params.orderId);

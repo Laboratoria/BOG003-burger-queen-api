@@ -1,9 +1,10 @@
 const Product = require('../models/Product');
+const pagination = require('../pagination');
 
 module.exports = {
   getProducts: async (req, resp) => {
-    const products = await Product.find();
-    resp.json(products);
+    const productsList = pagination(req, resp, Product);
+    return productsList;
   },
   getProduct: async (req, resp) => {
     const product = await Product.findById(req.params.productId);
