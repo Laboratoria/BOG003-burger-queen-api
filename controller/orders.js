@@ -4,7 +4,7 @@ const pagination = require('../pagination');
 
 module.exports = {
   getOrders: async (req, resp) => {
-    const ordersList = pagination(req, resp, Order);
+    const ordersList = pagination(req, resp, Order, 'orders');
     return ordersList;
   },
   getOrder: async (req, resp) => {

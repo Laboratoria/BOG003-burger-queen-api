@@ -3,7 +3,7 @@ const pagination = require('../pagination');
 
 module.exports = {
   getUsers: async (req, resp, next) => {
-    const usersList = pagination(req, resp, User);
+    const usersList = pagination(req, resp, User, 'users');
     return usersList;
   },
   getUser: async (req, resp, next) => {

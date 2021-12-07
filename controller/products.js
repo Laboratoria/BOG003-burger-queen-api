@@ -3,7 +3,7 @@ const pagination = require('../pagination');
 
 module.exports = {
   getProducts: async (req, resp) => {
-    const productsList = pagination(req, resp, Product);
+    const productsList = pagination(req, resp, Product, 'products');
     return productsList;
   },
   getProduct: async (req, resp) => {
