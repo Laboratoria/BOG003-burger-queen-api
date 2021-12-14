@@ -1,0 +1,9 @@
+POST http://localhost:80/auth
+Content-Type: application/json
+
+{   
+    "email":"kieromimir2@correovalidooo.com",
+    "password":"lacontraseña5",
+    "roles": {"admin": true},
+    "orders":[]
+}
