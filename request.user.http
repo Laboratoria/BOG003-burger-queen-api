@@ -6,9 +6,8 @@ POST http://localhost:80/users
 Content-Type: application/json
 
 {   
-    "email":"danna@correo.com",
-    "password":"contraseña",
-    "roles": {"admin": true},
+    "email":"danna@correovalidooo.com",
+    "password":"contraseña3",
     "orders":[]
 }
 
@@ -26,4 +25,4 @@ Content-Type: application/json
 }
 
 ### Borrar usuario
-DELETE http://localhost:80/users/61a691e729fc68bc2c9085ee
+DELETE http://localhost:80/users/61a90d355ed2cce78aa602f0
