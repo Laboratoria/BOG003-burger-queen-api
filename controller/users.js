@@ -1,5 +1,7 @@
 const User = require('../models/User');
+const Role = require('../models/Roles');
 const pagination = require('../pagination');
+
 
 module.exports = {
   getUsers: async (req, resp, next) => {
@@ -11,15 +13,16 @@ module.exports = {
     resp.json(user);
   },
   postUser: async (req, resp, next) => {
-    const { email, password, roles, orders } = req.body;
+    const { email, password, roles = {}, orders } = req.body;
+    const role = await new Role(roles).save();
     const newUser = new User({
       email,
-      password,
-      roles,
+      password: await User.encryptPassword(password),
+      roles: role._id,
       orders,
     });
-    await newUser.save();
-    resp.json({ message: 'User saved' });
+    const savedUser = await newUser.save();
+    return savedUser.populate('roles');
   },
   putUser: async (req, resp, next) => {
     const { email, password, roles, orders } = req.body;
