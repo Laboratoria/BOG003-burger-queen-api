@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
-const User = require('../models/User');
-const Roles = require('../models/Roles');
 const { postUser } = require('./users');
 const { secret } = config;
+const User = require('../models/User');
+const Role = require('../models/Roles');
 
 module.exports = {
   postAuth: async (req, resp) => {
@@ -11,7 +11,6 @@ module.exports = {
     const token = jwt.sign({ id: savedUser._id }, secret, {
       expiresIn: 86400,
     });
-    console.log('ste es el token', token);
     resp.json({ token });
   },
 
