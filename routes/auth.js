@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const { postAuth } = require('../controller/auth');
 
 const { secret } = config;
 
@@ -19,13 +20,13 @@ module.exports = (app, nextMain) => {
    */
   app.post('/auth', (req, resp, next) => {
     const { email, password } = req.body;
-
     if (!email || !password) {
       return next(400);
     }
 
     // TODO: autenticar a la usuarix
-    next();
+    postAuth(req, resp);
+    // next();
   });
 
   return nextMain();
